@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>页面切换</title>
+	<style type="text/css">
+		h1,body,html{
+			padding: 0;
+			margin: 0;
+		}
+		body{
+			font-family: Arial,"Microsoft YaHei","Hiragino Sans GB",sans-serif;
+		}
+		html,body{
+			height: 100%;
+			overflow: hidden;
+		}
+		h1{
+			font-size: 6em;
+			font-weight: normal;
+		}
+		p{
+			font-size: 2em;
+			margin:0.5em 0 2em 0;
+		}
+		#container,.section{
+			height: 100%;
+			position: relative;
+		}
+		#section0,
+		#section1,
+		#section2,
+		#section3{
+			background-color: #000;
+			background-size: cover;
+			background-position: 50% 50%;
+		}
+		#section0{
+			background-image: url(images/1.jpg);
+			color: #fff;
+			text-shadow:1px 1px 1px #333;
+		}
+		#section1{
+			color: #fff;
+			text-shadow:1px 1px 1px #333;
+			background-image: url(images/2.jpg);
+		}
+		#section2{
+			background-image: url(images/3.jpg);
+			color: #fff;
+			text-shadow:1px 1px 1px #666;
+		}
+		#section3{
+			color: #008283;
+			background-image: url(images/4.jpg);
+			text-shadow:1px 1px 1px #fff;
+		}
+		#section0 p{
+			color: #F1FF00;
+		}
+		#section3 p{
+			color: #00A3AF;
+		}
+		.left{
+			float: left;
+		}
+		.intro{
+			position: absolute;
+			top: 50%;
+			width: 100%;
+			-webkit-transform: translateY(-50%);
+			transform: translateY(-50%);
+			text-align: center;
+		}
+		#pages{
+			position:fixed;
+			right: 10px;
+			top: 50%;
+			list-style: none;
+		}
+		#pages li{
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: #fff;
+			margin: 0 0 10px 5px;
+		}
+		#pages li.active{
+			width: 14px;
+			height: 14px;
+			border: 2px solid #FFFE00;
+			background: none;
+			margin-left: 0;
+		}
+		#section0 .title{
+			-webkit-transform: translateX(-100%);
+			transform: translateX(-100%);
+			-webkit-animation: sectitle0 1s ease-in-out 100ms forwards;
+			animation: sectitle0 1s ease-in-out 100ms forwards;
+		}
+		#section0 p{
+			-webkit-transform: translateX(100%);
+			transform: translateX(100%);
+			-webkit-animation: sec0 1s ease-in-out 100ms forwards;
+			animation: sec0 1s ease-in-out 100ms forwards;
+		}
+		@-webkit-keyframes sectitle0{
+			0%{
+				-webkit-transform: translateX(-100%);
+				transform: translateX(-100%);
+			}
+			100%{
+				-webkit-transform: translateX(0);
+				transform: translateX(0);
+			}
+		}
+		@keyframes sectitle0{
+			0%{
+				-webkit-transform: translateX(-100%);
+				transform: translateX(-100%);
+			}
+			100%{
+				-webkit-transform: translateX(0);
+				transform: translateX(0);
+			}
+		}
+		@-webkit-keyframes sec0{
+			0%{
+				-webkit-transform: translateX(100%);
+				transform: translateX(100%);
+			}
+			100%{
+				-webkit-transform: translateX(0);
+				transform: translateX(0);
+			}
+		}
+		@keyframes sec0{
+			0%{
+				-webkit-transform: translateX(100%);
+				transform: translateX(100%);
+			}
+			100%{
+				-webkit-transform: translateX(0);
+				transform: translateX(0);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div class="section active" id="section0">
+			<div class="intro">
+				<h1 class="title">switchPage</h1>
+				<p>Create Beautiful Fullscreen Scrolling Websites</p>
+			</div>
+		</div>
+		<div class="section" id="section1">
+			<div class="intro">
+				<h1 class="title">Example</h1>
+				<p>HTML markup example to define 4 sections</p>
+				<img src="images/example.png"/>
+			</div>
+			
+		</div>
+		<div class="section" id="section2">
+			<div class="intro">
+				<h1 class="title">Example</h1>
+				<p>The plug-in configuration parameters</p>
+				<img src="images/example2.png"/>
+			</div>
+		</div>
+		<div class="section" id="section3">
+			<div class="intro">
+				<h1 class="title">THE END</h1>
+				<p>Everything will be okay in the end. If it's not okay, it's not the end.</p>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="pageswitch.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#container").switchPage({
+				'loop' : true,
+				'keyboard' : true,
+				'direction' : 'horizontal'
+			});
+		});
+	</script>
+</body>
+</html>
