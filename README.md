@@ -1,4 +1,4 @@
-# 学习笔记
+# 学习笔记:low_brightness:
 
 
 > 部分会在我的博客[疯狂的迈步](http://junhey.com)中写出，这里会记录前端的html\css\js（想知道整个前端，[戳我](http://html5ify.com/fks/fks_chart/)）欢迎*fork*后贡献*PR*，一起努力。
