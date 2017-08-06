@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+		(
+			function(foo)
+			{
+				console.log(foo.foo.bar);//1
+			}
+		)({foo:{bar:1}});
+		
+		/*var obj = {foo:{bar:1}};
+		
+		(
+			function(foo)
+			{
+				console.log(foo.bar);//1
+			}
+		)(obj)*/
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

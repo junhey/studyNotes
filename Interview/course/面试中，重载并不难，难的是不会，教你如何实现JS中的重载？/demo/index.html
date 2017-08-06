@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+        /*
+			函数名相同的情况下：
+			1、参数个数相同，类型不同，可以自动的区分函数
+			2、参数个数不同，也可以自动区分函数
+		*/
+		
+		function getData()
+		{
+			alert("将返回所有的数据");
+		}
+		
+		function getData(num)
+		{
+			alert("返回前" + num + "条数据");
+		}
+		
+		function getData(num1, num2)
+		{
+			alert("返回前" + num1 + " - " + num2 + "条数据");
+		}
+		
+		function getData(num, type)
+		{
+			
+		}
+		//getData(20, 100);
+        </script>
+        
+        <script type="text/javascript">
+        function getDataAll()
+		{
+			alert("将返回所有的数据");
+		}
+		
+		function getDataTop(num)
+		{
+			alert("返回前" + num + "条数据");
+		}
+		
+		function getDataLimit(num1, num2)
+		{
+			alert("返回前" + num1 + " - " + num2 + "条数据");
+		}
+		
+		function getdata(num1, num2)
+		{
+			var len = arguments.length;
+			if(!len)//数字0，表示假，如果“非”一下的话，那么就是真
+			{
+				getDataAll();
+			}
+			else if(len == 1)
+			{
+				getDataTop(num1);
+			}
+			else if(len == 2)
+			{
+				getDataLimit(num1, num2);
+			}
+		}
+		
+		//getdata(100, 1000);
+        </script>
+        
+        <script type="text/javascript">
+        function getDataAll()
+		{
+			alert("将返回所有的数据");
+		}
+		
+		function getDataTop(num)
+		{
+			alert("返回前" + num + "条数据");
+		}
+		
+		function getDataLimit(num1, num2)
+		{
+			alert("返回前" + num1 + " - " + num2 + "条数据");
+		}
+		
+		function getdata()
+		{
+			var len = arguments.length;
+			if(!len)//数字0，表示假，如果“非”一下的话，那么就是真
+			{
+				getDataAll();
+			}
+			else if(len == 1)
+			{
+				getDataTop(arguments[0]);
+			}
+			else if(len == 2)
+			{
+				getDataLimit(arguments[0], arguments[1]);
+			}
+		}
+		
+		//getdata(100, 1000);
+        </script>
+        
+        <script type="text/javascript">
+        function getDataAll()
+		{
+			alert("将返回所有的数据");
+		}
+		
+		function getDataTop(num)
+		{
+			alert("返回前" + num + "条数据");
+		}
+		
+		function getDataLimit(num1, num2)
+		{
+			alert("返回前" + num1 + " - " + num2 + "条数据");
+		}
+		
+		function getdata()
+		{
+			var len = arguments.length;
+			if(!len)//数字0，表示假，如果“非”一下的话，那么就是真
+			{
+				getDataAll();
+			}
+			else if(len == 1)
+			{
+				getDataTop.apply(this, arguments);
+			}
+			else if(len == 2)
+			{
+				getDataLimit.apply(this, arguments);
+			}
+		}
+		//getdata(100, 1000);
+        </script>
+        
+        <script type="text/javascript">
+        function getDataAll()
+		{
+			alert("将返回所有的数据");
+		}
+		
+		function getDataTop(num)
+		{
+			alert("返回前" + num + "条数据");
+		}
+		
+		function getDataLimit(num1, num2)
+		{
+			alert("返回前" + num1 + " - " + num2 + "条数据");
+		}
+		
+		function getDataByType(type)
+		{
+			alert("将返回" + type + "类型的所有数据");
+		}
+		
+		function getdata()
+		{
+			var len = arguments.length;
+			if(!len)//数字0，表示假，如果“非”一下的话，那么就是真
+			{
+				getDataAll();
+			}
+			else if(len == 1)
+			{
+				if(typeof arguments[0] == "number")
+				{
+					getDataTop.apply(this, arguments);
+				}
+				else
+				{
+					getDataByType.apply(this, arguments);
+				}
+			}
+			else if(len == 2)
+			{
+				getDataLimit.apply(this, arguments);
+			}
+		}
+		getdata("Array");
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

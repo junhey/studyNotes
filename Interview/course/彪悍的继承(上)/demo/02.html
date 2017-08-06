@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+        //animal
+		var Animal = function(name)
+		{
+			this.name = name;
+			this.sayhello = function()
+			{
+				alert("HI，我是" + this.name + "，你愿意和我做朋友吗？");
+			};
+		};
+		Animal.prototype.shout = function()
+		{
+			alert(this.name + "，正在叫！");
+		};
+		Animal.prototype.game = function()
+		{
+			alert(this.name + "，正在玩耍！");
+		};
+		
+		var Dog = function(name)
+		{
+			//this.name = name;
+			Dog.prototype.name = name;
+			console.log(this);
+		};
+		//原型继承
+		Dog.prototype = new Animal();
+		
+		var dog = new Dog("小黑");
+		dog.sayhello();
+		dog.shout();
+		dog.game();
+		
+		var dog2 = new Dog("小白");
+		dog2.sayhello();
+		dog2.shout();
+		dog2.game();
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

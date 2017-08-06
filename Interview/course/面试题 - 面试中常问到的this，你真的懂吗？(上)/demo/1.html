@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <style type="text/css">
+        div{margin:10px; width:50px; height:50px; background:#900; float:left;}
+        </style>
+        <script type="text/javascript">
+        var xiaoming =
+		{
+			name:"小明",
+			school:"在美国某大学",
+			ename:"乔治",
+			dosomething:"回国",
+			say:function()
+			{
+				alert(this.name + this.school + "，他的英文名叫" + this.ename + "，他明天就要" + this.dosomething);
+			},
+			say2:function()
+			{
+				alert(xiaoming.name + xiaoming.school + "，他的英文名叫" + xiaoming.ename + "，他明天就要" + xiaoming.dosomething);
+			}
+		};
+		/*xiaoming.say();
+		xiaoming.say2();*/
+		window.onload = function()
+		{
+			var divs = document.getElementsByTagName("div");
+			for(var i = 0, j = divs.length; i < j; i++)
+			{
+				divs[i].onclick = function()
+				{
+					alert(this.id);
+				};
+			}
+		};
+        </script>
+    </head>
+    
+    <body>
+    	<div id="div1"></div>
+        <div id="div2"></div>
+        <div id="div3"></div>
+        <div id="div4"></div>
+        <div id="div5"></div>
+    </body>
+</html>

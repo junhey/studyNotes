@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>就这3招，大幅提高面试成功几率，作用域和作用链也就这么回事儿</title>
+        <script type="text/javascript">
+        //第一招：搞定全局作用域（Global Scope）
+		var name = "前端网";//全局变量 全局作用域
+		var w3cfuns = function()//全局作用域
+		{
+			var website = "www.w3cfuns.com";//局部的 变量 
+			function getName()//局部的 函数（Local Scope）
+			{
+				alert(name);
+			}
+			alert(website);
+		};
+		alert(name);//前端网
+		//getName();//
+		
+		var sayHello = function()
+		{
+			lang = "Hello！ 欢迎来到W3Cfuns.com";
+			alert(lang);
+		};
+		sayHello();
+		alert(lang);
+		//console.log(window);
+		
+		/*C# Code
+			public static void test()
+			{
+				if(1 + 1 == 2)
+				{
+					string str = "我是块级作用域，在外部无法调用";
+				}
+				MessageBox.show(str);//就会报错
+			}
+		*/
+		var test = function()
+		{
+			if(1 + 1 == 2)//块级作用域（Block Scope）
+			{
+				var str = "由于JavaScript中【没有块级作用域】，所以str不受这个约束，所以才会被调用，才能看到这句话";
+			}
+			alert(str);
+		}
+		test();
+		//作用链
+		//在JavaScript中，函数也是对象，实际上，JavaScript里免得一切都是对象。函数对象和其它对象一样，拥有可以通过代码访问的属性和一系列仅供JavaScript引擎访问的内部属性。其中一个内部属性是[[Scope]]，由ECMA-262标准第三版定义，该内部属性包含了函数被创建的【作用域中的对象集合】，这个集合被称为函数的作用域链，它决定了哪些数据能被函数访问。
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

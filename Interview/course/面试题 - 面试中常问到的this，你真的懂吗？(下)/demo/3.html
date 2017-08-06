@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+        /*function test()
+		{
+			this.x = 1;
+		}
+		var o = new test();
+		alert(o.x);*/
+		//改造一下
+		var x = 2;
+		function test()
+		{
+			this.x = 1;
+		}
+		/*test();
+		alert(x);*/
+		var o = new test();
+		alert(o.x);//1
+		alert(x);//2
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

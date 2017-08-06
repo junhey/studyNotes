@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+		"use strict";//针对脚本文件：将"use strict"放在脚本文件的第一行，则整个脚本都将以"严格模式"运行。如果这行语句不在第一行，则无效，整个脚本以"普通模式"运行。
+        </script>
+        
+        <script type="text/javascript">
+		var abc = function()//针对单个函数：将"use strict"放在函数体的第一行，则整个函数以"严格模式"运行
+		{
+			"use strict";
+			
+		};
+		</script>
+        
+        <script type="text/javascript">
+//脚本文件的变通写法：因为第一种调用方法不利于文件合并，所以更好的做法是，借用第二种方法，将整个脚本文件放在一个立即执行的匿名函数之中。
+		(
+			function()
+			{
+				"use strict";
+			}
+		)();
+		</script>
+    </head>
+    
+    <body>
+    </body>
+</html>

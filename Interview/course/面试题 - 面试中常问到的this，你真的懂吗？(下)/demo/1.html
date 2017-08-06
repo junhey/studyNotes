@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+		var info = ["W3Cfuns", "QQ", "Sina", "SouHu", "YouKu", "TuDou"];
+        var it =
+		{
+			info:["前端开发网", "腾讯", "新浪", "搜狐", "优酷", "土豆"],
+			getinfo:function()
+			{
+				alert(this.info.join(","));
+			}
+		};
+		
+		//it.getinfo();
+		
+		var data = it.getinfo;
+		data();
+		
+		var data2 = function()
+		{
+			alert(this.info.join(","));
+		};
+		data2();
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+		var asdfasdf =
+		{
+			info:["前端开发网", "腾讯", "新浪", "搜狐", "优酷", "土豆"],
+			getinfo:function()
+			{
+				console.log(this);
+				console.log(this.info);
+				var _this = this;
+				function abc()
+				{
+					/*console.log(it);
+					console.log(it.info);*/
+					console.log(_this);
+					console.log(_this.info);
+				};
+				abc();
+			}
+		};
+		asdfasdf.getinfo();
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

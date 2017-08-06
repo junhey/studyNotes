@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+		/*
+		普通模式下，如果对象有多个重名属性，最后赋值的那个属性会覆盖前面的值。严格模式下，这属于语法错误。
+		*/
+		"use strict";
+		var o =
+		{
+			x : 200,
+			x : 300
+		};
+		console.log(o);
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

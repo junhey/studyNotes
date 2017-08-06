@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+        var Animal = function(name)
+		{
+			this.name = name;
+			this.sayhello = function()
+			{
+				alert("Hello！我是" +  this.name + "，你愿意和我做朋友吗？");
+			};
+			console.log(this);
+		};
+		Animal.prototype.shout = function()
+		{
+			alert(this.name + "，正在叫！");
+		};
+		Animal.prototype.game = function()
+		{
+			alert(this.name + "，正在玩耍！");
+		};
+		
+		var Dog =  function(name, color)
+		{
+			Animal.call(this, name);
+		};
+		
+		var xh = new Dog("小黑");
+		xh.sayhello();
+		xh.shout();
+		xh.game();
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

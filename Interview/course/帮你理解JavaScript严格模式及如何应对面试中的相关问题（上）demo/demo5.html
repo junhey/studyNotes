@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+		/*
+		为了让代码更安全 禁止在函数内部遍历调用栈
+		*/
+		"use strict";
+		var fn = function()
+		{
+			alert(fn.arguments.length);
+		};
+		fn("abc", "cbd");
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

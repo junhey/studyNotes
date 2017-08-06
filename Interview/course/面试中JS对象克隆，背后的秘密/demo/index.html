@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>面试中JS对象克隆，背后的秘密</title>
+        <script type="text/javascript">
+		/*
+		原始数据类型（5种）：undefined null number string boolean
+		引用数据类型（1种）：
+		虽然引用数据类型只有1种，但是它可以将多种原始的数据存在一个单元中，这也就是为什么它被称为“复合数据类型”，也就是对象——Object。
+		
+		原始数据类型和引用数据类型的区别：
+		首先咱们先来看下它的概念，概念如果看不太明白，没有关系，我会在之后举例。
+	   原始数据类型：在内存中，存放在栈中的简单数据段，也就是说，他们直接存储在变量访问的位置。
+	   引用数据类型：在内存中，存放在堆中的对象，就是说，存储在变量处的值是一个指针，指向存储对象的内存处。
+	   
+	   举例说明：
+		原始数据类型就像一个文件，我们可以直接找到并打开的过程。
+		引用数据类型就像一个文件的快捷方式，我们是通过快捷方式找到文件的位置，打开的过程。
+		*/
+		
+		function clone(obj)
+		{
+			var o;
+			if(obj instanceof Array)//判断obj是否是Array的实例 比如 var arr1 = new Array(); arr1就是Array的实例（实例化对象）
+			{
+				o = [];//创建一个空数组
+				var len = obj.length;
+				while(len--)
+				{
+					o[len] = clone(obj[len]);
+				}
+				return o;
+			}
+			else if(obj instanceof Object)
+			{
+				o = {};//创建一个空对象
+				for(var k in obj)
+				{
+					o[k] = clone(obj[k]);
+				}
+				return o;
+			}
+			else
+			{
+				return obj;
+			}
+		}
+		
+		function clone2(obj)//代码优化
+		{
+			var o = obj instanceof Array ? [] : {};
+			for(var k in obj)
+			{
+				if(obj[k] instanceof Object)
+				{
+					o[k] = clone2(obj[k]);//判断对象中是否包含对象
+				}
+				else
+				{
+					o[k] = obj[k];//只要不是对象是什么就复制什么
+				}
+			}
+			return o;
+		}
+		
+		function clone3(obj)//代码再优化
+		{
+			var o = obj instanceof Array ? [] : {};
+			for(var k in obj){o[k] = obj[k] instanceof Object ? clone3(obj[k]) : obj[k];}
+			return o;
+		}
+		
+		var obj1 = {"name":"前端网"};
+		console.log("====obj1====");
+		console.log(obj1);
+		var obj2 = clone3(obj1);
+		obj2.url = "www.w3cfuns.com";
+		console.log("====obj2====");
+		console.log(obj2);
+		console.log("====obj1====");
+		console.log(obj1);
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

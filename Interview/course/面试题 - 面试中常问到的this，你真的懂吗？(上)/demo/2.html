@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+		var test = function()
+		{
+			this.x = 1;
+			alert(this.x);
+		};
+		//test();
+		//改造后
+		//alert(window.x);
+		//console.log(window);
+		//console.log(this);
+		//var x = 1;
+		function test2()
+		{
+			alert(this.x);
+		}
+		//test2();
+		//再次证明
+		var x = 1;
+		function test3()
+		{
+			this.x = 100;
+		}
+		test3();
+		//alert(x);
+		
+		//来一个稍微复杂点的
+		var name = "小明";
+		var job = "电焊工";
+		
+		function say()
+		{
+			alert(this.name + "是一名" + this.job);
+		}
+		
+		var it =
+		{
+			//name:"杰西",
+			//job:"就职于W3Cfuns.com的前端开发工程师",
+			say:function()
+			{
+				alert(this.name + "是一名" + this.job);
+			}
+		};
+		/*say();
+		window.say();
+		this.say();*/
+		it.say();
+		//window.it.say();
+		//this.it.say();
+		//console.log(window);
+		</script>
+    </head>
+    
+    <body>
+    </body>
+</html>

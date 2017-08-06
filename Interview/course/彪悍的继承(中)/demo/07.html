@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+		Function.prototype.extends = function(superclass){this.prototype = new superclass();};
+		
+        //animal 父类 超类
+		var Animal = function(name)
+		{
+			this.name = name;
+			this.sayhello = function()
+			{
+				alert("HI，我是" + this.name + "，你愿意和我做朋友吗？");
+			};
+		};
+		Animal.prototype.shout = function()
+		{
+			alert(this.name + "，正在叫！");
+		};
+		Animal.prototype.game = function()
+		{
+			alert(this.name + "，正在玩耍！");
+		};
+		
+		var Dog = function(name)
+		{
+			this.name = name;
+			this.shout = function()//重写父类的函数
+			{
+				alert(this.name + "，正在汪汪叫，叫的很开心！");
+			};
+		};
+		Dog.extends(Animal);
+		
+		var Cat = function(name)
+		{
+			this.name = name;
+			this.shout = function()
+			{
+				alert(this.name + "，正在喵喵叫！");
+			};
+		};
+		Cat.extends(Animal);
+		
+		//原型继承
+		//Dog.prototype = Cat.prototype = new Animal();
+		/*inherit(Dog, Animal);
+		inherit(Cat, Animal);*/
+		//Dog.extends(Animal);
+		//Cat.extends(Animal);
+		
+		/*var xh = new Dog("小黑");
+		xh.sayhello();
+		xh.shout();
+		xh.game();
+		
+		var xm = new Cat("小咪");
+		xm.sayhello();
+		xm.shout();
+		xm.game();*/
+		
+		var Husky = function(name, color, sex)
+		{
+			this.name = name;
+			this.color = color;
+			this.sex = sex;
+			this.sayhello = function()
+			{
+				alert("Hello，我是一条小" + this.sex + "狗，有一个非常好听的名字，叫：“" + this.name + "”，你愿意和我做朋友吗？");
+			};
+			this.showcolor = function()
+			{
+				alert(this.color);
+			};
+			/*this.shout = function()//重写父类的函数
+			{
+				alert(this.name + "，哼哼叫！");
+			};*/
+		};
+		Husky.extends(Dog);
+		
+		var xh = new Husky("小哈", "黑白", "公");
+		xh.sayhello();
+		xh.shout();
+		xh.game();
+		xh.showcolor();
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

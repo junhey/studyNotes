@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+		/*
+		arguments对象的限制：arguments是函数的参数对象，严格模式对它的使用做了限制。
+		1：不允许对arguments赋值
+		2：arguments不再追踪参数的变化
+		3：禁止使用arguments.callee 这意味着，我们无法在匿名函数内部调用自身（递归）了。
+		*/
+		
+		"use strict";
+		/*var fn = function()
+		{
+			arguments = 100;
+		};
+		fn();*/
+		
+		/*var fn = function(num)
+		{
+			num += 100;
+			alert(num);//200
+			alert(arguments[0]);//200
+		};
+		fn(100);*/
+		
+		var num = 0;
+		(
+			function(num)
+			{
+				num++;
+				if(num <= 5)
+				{
+					alert(num);
+					arguments.callee(num);
+				}
+			}
+		)(num);
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+        /**
+		 * ==================================================================
+		 * 要求：
+		 * 1, 只能在指定的位置填写自己的代码，本文件里的其他代码不能修改
+		 * 2, 所有题目都不允许添加全局变量名
+		 * 3, 本文件应该能在firebug的console里正常执行，并输出结果
+		 * 4, 代码的执行效率会作为评判的重要标准
+		 * 5, 共3题
+		 * ==================================================================
+		 */
+		
+		/**
+		 * ==================================================================
+		 * 题1: 实现一个遍历数组或对象里所有成员的迭代器
+		 * ==================================================================
+		 */
+		 
+		var each = function(obj, fn)
+		{
+			//+++++++++++答题区域+++++++++++
+			if(obj instanceof Array)
+			{
+				for(var i = 0, j = obj.length; i < j; i++)
+				{
+					var temp = fn.call(obj[i], i + 1);
+					if(temp === false)
+					{
+						return;
+					}
+				}
+			}
+			else if(obj instanceof Object)
+			{
+				for(var v in obj)
+				{
+					fn.apply(obj[v], [obj[v], v]);
+					//v=a      4          4      a
+				}
+			}
+			//+++++++++++答题结束+++++++++++
+		};
+		
+		try
+		{
+			var data1 = [4,5,6,7,8,9,10,11,12];
+			var data2 =
+			{
+				"a": 4,
+				"b": 5,
+				"c": 6
+			};
+			
+			console.group(data1);
+			each
+			(
+				data1, function(o)
+				{
+					if( 6 == this )
+						return true;//表示跳过并继续遍历
+					else if( 8 == this )
+						return false;//表示停止遍历
+					console.log(o + ": \"" + this + "\"");
+				}
+			);
+			console.groupEnd();
+		
+			/*------[执行结果]------
+			1: "4"
+			2: "5"
+			4: "7"
+			------------------*/
+			
+			console.group(data2);
+			each(data2, function(v, n)
+			{
+				if( 5 == this )//表示跳过5
+				{
+					return true;
+				}
+				console.log(n + ": \"" + v + "\"");
+			});
+			console.groupEnd();
+		
+			/*------[执行结果]------
+			a: "4"
+			c: "6"
+			------------------*/
+		}
+		catch(e)
+		{
+			console.error("执行出错，错误信息: " + e);
+		}
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

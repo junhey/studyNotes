@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+		"use strict";
+		/*
+		函数必须声明在顶层：将来Javascript的新版本会引入"块级作用域"。为了与新版本接轨，严格模式只允许在全局作用域或函数作用域的顶层声明函数。换句话说，不允许在非函数的代码块内声明函数。
+		*/
+		
+		var a = 6;
+		if(a > 5)
+		{
+			(
+				function()
+				{
+					alert("我虽然也在if里，但是我是这种方式声明的函数，没关系");
+				}
+			)();
+			
+			/*function fn()
+			{
+				alert("严格模式下，我不应该在这里被声明，这不是我应该待在的地方");
+			}
+			fn();*/
+		}
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

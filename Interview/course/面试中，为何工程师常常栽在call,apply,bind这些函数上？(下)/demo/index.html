@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+		var info = ["W3Cfuns", "QQ", "Sina", "SouHu", "YouKu", "TuDou"];
+        var it =
+		{
+			info:["前端开发网", "腾讯", "新浪", "搜狐", "优酷", "土豆"],
+			getinfo:function()
+			{
+				alert(this.info.join(","));
+			}
+		};
+		
+		//it.getinfo();
+		
+		//var data = it.getinfo;
+		//data();
+        </script>
+        
+        <script type="text/javascript">
+		var info = ["W3Cfuns", "QQ", "Sina", "SouHu", "YouKu", "TuDou"];
+        var it =
+		{
+			info:["前端开发网", "腾讯", "新浪", "搜狐", "优酷", "土豆"],
+			getinfo:function()
+			{
+				alert(this.info.join(","));
+			}
+		};
+		
+		//it.getinfo();
+		
+		//var data = it.getinfo.bind(it);
+		//data();
+        </script>
+        
+        <script type="text/javascript">
+		var jx =
+		{
+			name:"杰西",
+			gender:"男",
+			age:24,
+			company:"前端开发网（W3Cfuns.com）",
+			job:"前端开发总监",
+			say:function()
+			{
+				alert(this.name + "，" + this.gender + "，今年" + this.age + "岁，在" + this.company + "担任" + this.job + "一职");
+			}
+		};
+		
+		//jx.say();
+		
+		var xm = jx.say.bind
+		(
+			{
+				name:"小明",
+				gender:"男",
+				age:23,
+				company:"谷歌 Google",
+				job:"资深前端开发工程师"
+			}
+		);
+		//xm();
+		
+		//注意：JavaScript1.8.5版本中，原生实现bind方法，目前IE9+，FF4，Chrome7+，opera
+		</script>
+        
+        <script type="text/javascript">
+		var jx =
+		{
+			name:"杰西",
+			job:"前端开发总监",
+			say:function(gender, age, company)
+			{
+				alert(this.name + "，" + gender + "，今年" + age + "岁，在" + company + "担任" + this.job + "一职");
+			}
+		};
+		var data = jx.say.bind(jx, "男", 24, "前端开发网（W3Cfuns.com）");
+		data();
+		
+		//最终总结：call,apply和bind都是可以“绑架”this，逼迫其指向其他的对象。 逼婚
+		</script>
+    </head>
+    
+    <body>
+    </body>
+</html>

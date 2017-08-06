@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+		(
+			function()
+			{
+				var a = 10;
+				fn();
+				function fn()
+				{
+					var a = a + 10;
+					console.log(a);//NaN
+					return a;
+				}
+				console.log(a);//10
+				console.log(fn() + 10);//NaN
+			}
+		)();
+		/*
+			NaN
+			10
+			NaN
+			NaN
+		*/
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

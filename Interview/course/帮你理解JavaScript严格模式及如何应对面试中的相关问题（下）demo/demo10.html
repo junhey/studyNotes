@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+		/*
+		普通模式下，如果函数有多个重名的参数（解决办法可以用arguments[i]读取）。严格模式下，多个重名的参数这属于语法错误。
+		*/
+		"use strict";
+		var fn = function(x, x, y)
+		{
+			alert(x + y);
+		};
+		fn(1, 2)
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+		/*
+		严格模式下，对禁止扩展的对象添加新属性，会报错。
+		*/
+		//"use strict";
+		var o = {};
+		o.x = 100;
+		Object.preventExtensions(o);
+		o.y = 200;
+		console.log(o);
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

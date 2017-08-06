@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>数组去重要谨慎</title>
+        <script type="text/javascript">
+		/*
+请看下面数组，其中的元素有多次重复，请写一个函数来实现去除数组中重复的元素。
+*/
+        var arr = [1, 1, 2, '2', 3, 4, 5, 6, 6, 7, 8, 9, 0, "a", "a", "b"];
+		
+		//双循环思路 去重
+		Array.prototype.unique = function()
+		{
+			var newarr = [];
+			var flag = true;
+			for(var i = 0; i < this.length; i++)
+			{
+				for(var j = 0; j < newarr.length; j++)
+				{
+					if(newarr[j] === this[i])
+					{
+						flag = false;
+						break;
+					}
+					else
+					{
+						flag = true;
+					}
+				}
+				
+				if(flag)
+				{
+					newarr.push(this[i]);
+				}
+			}
+			return newarr;
+		};
+		
+		Array.prototype.unique2 = function()
+		{
+			var newarr = [];
+			var flag = true;
+			var i = this.length;
+			var j = 0;
+			
+			while(--i >= 0)
+			{
+				j = newarr.length;
+				while(--j >= 0)
+				{
+					flag = newarr[j] !== this[i];
+					if(!flag){break;}
+				}
+				flag && newarr.push(this[i]);
+			}
+			return newarr.reverse();
+		};
+		
+		//对象去重法
+		Array.prototype.unique3 = function()
+		{
+			var obj = {}, newArr = [];
+			for(var i = 0, j = this.length; i < j; i++)
+			{
+				obj[this[i]] = "";
+			}
+			
+			for(var items in obj)
+			{
+				newArr.push(items);
+			}
+			
+			return newArr;
+		};
+		
+		//对象去重法 优化
+		Array.prototype.unique4 = function()
+		{
+			var obj = {}, newArr = [];
+			for(var i = this.length - 1; i >= 0; i--)//优化的是循环
+			{
+				obj[this[i]] = "";
+			}
+			
+			for(var items in obj){newArr.push(items);}
+			
+			return newArr.reverse();
+		};
+		
+		Array.prototype.unique5 = function()//保证了数据类型不变，但是字符串类型的“数字” 和 真正的数字无法区分；【小心陷阱】数值一致数据类型不同，是否算重复，这个在答卷的时候要注意
+		{
+			var obj = {}, newArr = [];
+			for(var i = this.length - 1; i >= 0; i--)//优化的是循环
+			{
+				if(obj[this[i]] == undefined)
+				{
+					obj[this[i]] = "";
+					newArr.push(this[i]);
+				}
+			}
+			
+			return newArr.reverse();
+		};
+		
+		Array.prototype.unique6 = function()//保证了数据类型不变，字符串类型的“数字” 和 真正的数字可以区分
+		{
+			var obj = {}, newArr = [];
+			for(var i = this.length - 1; i >= 0; i--)
+			{
+				if(obj[this[i]] == undefined || obj[this[i]] !== this[i])
+				{
+					obj[this[i]] = this[i];
+					newArr.push(this[i]);
+				}
+			}
+			
+			return newArr.reverse();
+		};
+		
+		Array.prototype.unique7 = function()
+		{
+			var obj = {}, newArr = [], i = this.length;
+			while(--i >= 0){(obj[this[i]] == undefined || obj[this[i]] !== this[i]) && (obj[this[i]] = this[i], newArr.push(this[i]));}
+			return newArr.reverse();
+		};
+		
+		//正则表达式方法
+		Array.prototype.uniqueRegex = function(){return this.join(",").match(/([^,]+)(?!.*\1)/ig);};
+		
+		console.log(arr.uniqueRegex());
+        </script>
+    </head>
+    
+    <body>
+    	
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+		function test()
+		{
+			alert(this.x);
+		}
+		
+		/*var test = function()
+		{
+			alert(this.x);
+		};*/
+		//test();
+		/*var o = {};
+		o.x = 1;
+		o.t = test;
+		o.t();*/
+		
+		/*var o =
+		{
+			x:1,
+			t:test
+		};
+		o.t();*/
+		
+		var o =
+		{
+			x:1,
+			t:function test()
+			{
+				alert(this.x);
+			}
+		};
+		o.t();
+		</script>
+    </head>
+    
+    <body>
+    </body>
+</html>

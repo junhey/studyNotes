@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+        /**
+		 * ==================================================================
+		 * 题3: 实现一个URI解析方法，把url里#之后的参数解析成指定的数据结构
+		 * ==================================================================
+		 */
+		function urlParser(s)
+		{
+			//+++++++++++答题区域+++++++++++
+			var data = [];
+			s = s.split("#")[1];
+			var pagearr;
+			if(/page.*\?/.test(s))
+			{
+				pagearr = s.match(/page.*\?/)[0].split("/");
+				data.push(pagearr[0]);
+				pagearr[1] && data.push(pagearr[1]);
+			}
+			
+			/\?/.test(s) && (s = s.split("?")[1]);
+			s = "{" + (s.replace(/(\=)(\w*)/g, ':\$2').replace(/&/g, ",")) + "}";
+			s = s.replace(/(\w+)/g, '"$1"');
+			data.push(eval( '(' + s + ')' ));
+			return data;
+			//+++++++++++答题结束+++++++++++
+		}
+		
+		try
+		{
+			var url1 = "http://www.abc.com/m/s/#page/2/?type=latest_videos&page_size=20";
+			var url2 = "http://www.abc.com/m/s/#type=latest_videos&page_size=20";
+			var url3 = "http://www.abc.com/m/s/#page?type=latest_videos&page_size=20";
+			console.group();
+			console.info( urlParser(url1) );
+			console.info( urlParser(url2) );
+			console.info( urlParser(url3) );
+			console.groupEnd();
+			/*------[执行结果]------
+		
+			["page", "2", { "type": "latest_videos", "page_size": 20 }]
+			[{ "type": "latest_videos", "page_size": 20 }]
+			["page", { "type": "latest_videos", "page_size": 20 }]
+			
+			------------------*/
+			
+		}
+		catch(e)
+		{
+			console.error("执行出错，错误信息: " + e);
+		}
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

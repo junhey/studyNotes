@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+        var Animal = function(name)
+		{
+			this.name = name;
+			this.sayhello = function()
+			{
+				alert("Hello！我是" +  this.name + "，你愿意和我做朋友吗？");
+			};
+			this.shout = function()
+			{
+				alert(this.name + "，正在叫！");
+			};
+			this.game = function()
+			{
+				alert(this.name + "，正在玩耍！");
+			};
+			console.log(this);
+		};
+		/*Animal.prototype.shout = function()
+		{
+			alert(this.name + "，正在叫！");
+		};
+		Animal.prototype.game = function()
+		{
+			alert(this.name + "，正在玩耍！");
+		};*/
+		
+		var Dog =  function(name, color)
+		{
+			Animal.call(this, name);
+			//Animal.apply(this, [name]);
+			this.color = color;
+			this.sayhello = function()//同样可以覆盖父类（超类）中的函数（方法）
+			{
+				alert("Hello！我是" +  this.name + "，你看看我的" + this.color + "色好看吗？？");
+			};
+			this.showcolor = function()//同样可以自己发展出父类中所没有的属性或函数
+			{
+				alert("我是一条" + this.color + "色的小狗狗~~");
+			};
+		};
+		
+		//Dog.prototype = new Animal();
+		
+		var xh = new Dog("小黑", "黑白");
+		xh.sayhello();
+		xh.showcolor();
+		xh.shout();
+		xh.game();
+		
+		/*
+		call和apply这种方式的继承适用于没有prototype的类或者不需要继承prototype所添加的属性或函数的类；因为call和apply函数只是实现了方法的替换，而没有对对象的属性和函数进行复制操作。
+
+		
+		原型继承，则可以继承所有的属性和函数。
+		*/
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

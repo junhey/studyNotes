@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>优雅的代码为面试加分 链式调用让面试官更青睐你的代码</title>
+        <script type="text/javascript">
+		/*
+			链式调用，可以让我们的代码更加优雅，让我们用少量的代码表达复杂的操作。
+			
+			$("#abc").css({"width":"xxx","height":"xxx","position":"xxx"}).hide().show();
+		*/
+		/**
+		 * ==================================================================
+		 * 要求：
+		 * 1, 完成指定的位置填写自己的代码，本文件里的其他代码不能修改
+		 * 2, 所有题目都不允许添加全局变量名
+		 * 3, 代码运行后，可根据 第53行 代码所示，按照要求元素设置上name,class,style及value属性
+		 * 4, 代码的执行效率及逻辑思维能力作为评判的重要标准
+		 * ==================================================================
+		 */
+		
+		var dom = function(id)
+		{
+			//+++++++++++答题区域+++++++++++
+			this.elem = document.getElementById(id);
+			//+++++++++++答题结束+++++++++++
+		};
+		dom.prototype =
+		{
+			setname:function(name)
+			{
+				//+++++++++++答题区域+++++++++++
+				this.elem.name = name;
+				return this;
+				//+++++++++++答题结束+++++++++++
+			},
+			setclass:function(clsname)
+			{
+				//+++++++++++答题区域+++++++++++
+				this.elem.className = clsname;
+				return this;
+				//+++++++++++答题结束+++++++++++
+			},
+			setstyle:function(k, v)//k=key  v=value
+			{
+				//+++++++++++答题区域+++++++++++
+				if(arguments.length == 1)
+				{
+					for(var key in k)
+					{
+						this.elem.style[key] = k[key];
+					}
+				}
+				else if(arguments.length == 2)
+				{
+					this.elem.style[k] = v;
+				}
+				else
+				{
+					alert("参数无效");
+				}
+				return this;
+				//+++++++++++答题结束+++++++++++
+			},
+			setval:function(v)
+			{
+				//+++++++++++答题区域+++++++++++
+				this.elem.value = v;
+				return this;
+				//+++++++++++答题结束+++++++++++
+			}
+		};
+		
+		window.onload = function()
+		{
+			/*var obj = new dom("username");
+			obj.
+				setclass("box").
+				setname("content").
+				setval("请输入用户名").
+				setstyle({"color":"#333", "border":"1px #d1d1d1 solid", "outline":"none", "font-size":"12px"});*/
+			new dom("username").setname("content").setclass("box").setstyle({"color":"#333", "border":"1px #d1d1d1 solid", "outline":"none", "font-size":"12px"}).setval("请输入用户名");
+		}
+        </script>
+    </head>
+    
+    <body>
+    	<input id="username"/>
+    </body>
+</html>

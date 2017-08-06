@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+		//var inherit = function(subclass, superclass){subclass.prototype = new superclass();};
+		Function.prototype.extends = function(superclass){this.prototype = new superclass();};
+		
+        //animal 父类 超类
+		var Animal = function(name)
+		{
+			this.name = name;
+			this.sayhello = function()
+			{
+				alert("HI，我是" + this.name + "，你愿意和我做朋友吗？");
+			};
+		};
+		Animal.prototype.shout = function()
+		{
+			alert(this.name + "，正在叫！");
+		};
+		Animal.prototype.game = function()
+		{
+			alert(this.name + "，正在玩耍！");
+		};
+		
+		var Dog = function(name)
+		{
+			this.name = name;
+			this.shout = function()//重写父类的函数
+			{
+				alert(this.name + "，正在汪汪叫！");
+			};
+		};
+		Dog.extends(Animal);
+		
+		var Cat = function(name)
+		{
+			this.name = name;
+			this.shout = function()
+			{
+				alert(this.name + "，正在喵喵叫！");
+			};
+		};
+		Cat.extends(Animal);
+		
+		//原型继承
+		//Dog.prototype = Cat.prototype = new Animal();
+		/*inherit(Dog, Animal);
+		inherit(Cat, Animal);*/
+		//Dog.extends(Animal);
+		//Cat.extends(Animal);
+		
+		var xh = new Dog("小黑");
+		xh.sayhello();
+		xh.shout();
+		xh.game();
+		
+		var xm = new Cat("小咪");
+		xm.sayhello();
+		xm.shout();
+		xm.game();
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

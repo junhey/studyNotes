@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+		c = 123;
+		var c = 456;
+		console.log(this.c);// window.c ① 
+		function b (x, y, c)
+		{  
+			c = 3;  
+			arguments[2] = 10;  
+			console.log(c); //②
+			console.log(this.c); //③
+		
+			var c = 3;  
+			console.log(c); //④
+			console.log(this.c); //⑤
+		}
+		b(10, 20, 30, 40);  
+		
+		/*
+		456
+		10
+		456
+		3
+		456
+		*/
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

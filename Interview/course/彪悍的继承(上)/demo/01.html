@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+        //animal
+		var Animal = function(name)
+		{
+			this.name = name;
+			this.sayhello = function()
+			{
+				alert("HI，我是" + this.name + "，你愿意和我做朋友吗？");
+			};
+		};
+		Animal.prototype.shout = function()
+		{
+			alert(this.name + "，正在叫！");
+		};
+		Animal.prototype.game = function()
+		{
+			alert(this.name + "，正在玩耍！");
+		};
+		
+		var dog = new Animal();
+		dog.name = "小黑";
+		dog.sayhello();
+		dog.shout();
+		dog.game();
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

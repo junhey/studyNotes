@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+        function xiaohong()
+		{
+			alert("小红");
+		}
+		
+		function xiaoming()
+		{
+			return "小明";
+		}
+		
+		/*xiaohong.call(xiaoming);
+		alert(xiaoming.call(xiaohong));*/
+		//用在函数上面的
+        </script>
+        
+        <script type="text/javascript">
+		var Dog = function()
+		{
+			this.name = "旺星人";
+			this.shout = function()
+			{
+				alert(this.name);
+			}
+		};
+		
+		var Cat = function()
+		{
+			this.name = "喵星人";
+			this.shout = function()
+			{
+				alert(this.name);
+			}
+		};
+		
+		var dog = new Dog();
+		var cat = new Cat();
+		/*dog.shout();
+		cat.shout();*/
+		</script>
+        
+        <script type="text/javascript">
+		var Dog = function()
+		{
+			this.name = "旺星人";
+			this.shout = function()
+			{
+				alert(this.name);
+			}
+		};
+		
+		var Cat = function()
+		{
+			this.name = "喵星人";
+		};
+		
+		/*var dog = new Dog();
+		var cat = new Cat();
+		dog.shout.call(cat);//dog.shout中的this对象，将指向cat对象。
+		dog.shout();*/
+		</script>
+        
+        <script type="text/javascript">
+        var xh =
+		{
+			name:"小红",
+			job:"JS工程师"
+		};
+		
+		var xm =
+		{
+			name:"小明",
+			job:"资深前端开发工程师"
+		};
+		
+		var jx =
+		{
+			name:"杰西",
+			job:"前端开发总监"
+		};
+		
+		function myjob()
+		{
+			alert(this.name + "是一名" + this.job);
+		}
+		/*myjob.call(xh);
+		myjob.call(xm);
+		myjob.call(jx);*/
+		
+		/*myjob.apply(xh);
+		myjob.apply(xm);
+		myjob.apply(jx);*/
+        </script>
+        
+        <script type="text/javascript">
+		//call和apply的结果是一样的，那么有什么区别呢？咱们现在给函数加上个参数，来试试看
+		var xh =
+		{
+			name:"小红",
+			job:"JS工程师"
+		};
+		
+		var xm =
+		{
+			name:"小明",
+			job:"资深前端开发工程师"
+		};
+		
+		var jx =
+		{
+			name:"杰西",
+			job:"前端开发总监"
+		};
+		
+		//杰西，男，今年24岁，在前端开发网（W3Cfuns.com）担任前端开发总监一职
+		function myjob(gender, age, company)
+		{
+			alert(this.name + "，" + gender + "，今年" + age + "岁，在" + company + "担任" + this.job + "一职");
+		}
+		
+		/*myjob.call(xh, "女", 22, "腾讯");
+		myjob.call(xm, "男", 23, "谷歌");
+		myjob.call(jx, "男", 24, "前端开发网（W3Cfuns.com）");*/
+		
+		/*myjob.apply(xh, ["女", 22, "腾讯"]);
+		myjob.apply(xm, ["男", 23, "谷歌"]);
+		myjob.apply(jx, ["男", 24, "前端开发网（W3Cfuns.com）"]);*/
+		
+		/*总结出：
+		在call传入参数的时候，需要与函数所接受的参数一一对应；
+		在apply传入参数的时候，则以数组的方式传入，数组中的元素需要与函数所接受的参数一一对应；*/
+		</script>
+        
+        <script type="text/javascript">
+		var info = ["W3Cfuns", "QQ", "Sina", "SouHu", "YouKu", "TuDou"];
+        var it =
+		{
+			info:["前端开发网", "腾讯", "新浪", "搜狐", "优酷", "土豆"],
+			getinfo:function()
+			{
+				alert(this.info.join(","));
+			}
+		};
+		
+		it.getinfo();
+		
+		var data = it.getinfo;
+		data();
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

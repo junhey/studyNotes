@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+		//在console中打印出的内容是？
+		(
+			function()
+			{
+				var a = 10;
+				fn();
+				function fn()
+				{
+					a = a + 10;
+					console.log(a);
+					return a;
+				}
+				console.log(a);
+				console.log(fn() + 10);
+			}
+		)();
+		/*
+			20
+			20
+			30
+			40
+		*/
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

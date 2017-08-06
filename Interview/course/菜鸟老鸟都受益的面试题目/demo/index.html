@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>菜鸟老鸟都受益的面试题目</title>
+<script type="text/javascript">
+//使用length清空数组
+var arr1 = arr2 = [1, 2, 3];
+//arr1.length = 0;
+//console.log(arr2);
+
+//利用Length缩减数组
+/*var arr = [1,2,3,4,5,6,7,8,9,10];
+arr.length = 5;
+console.log(arr);*/
+
+//合并数组，push方法合并数组
+/*var arr1 = [1, 2, 3];
+var arr2 = [4, 5, 6];
+var arr3 = arr1.concat(arr2);
+console.log(arr3);*/
+
+var arr1 = [1, 2, 3];
+var arr2 = [4, 5, 6];
+var arr3 = [];
+//改变this指向arr3
+Array.prototype.push.apply(arr1, arr2);
+console.log(arr1);
+
+
+//特性检测
+/*var obj = document.getElementById("box");
+if(obj.addEventListener)
+{
+	obj.addEventListener();
+}
+else
+{
+	obj.attachEvent();
+}*/
+
+/*var obj = document.getElementById("box");
+if("addEventListener" in window)
+{
+	obj.addEventListener();
+}
+else
+{
+	obj.attachEvent();
+}
+*/
+//检测一个对象是不是数组
+//在JavaScript里, 可以用 typeof 来检查变量类型. typeof 可以返回: number , boolean, string, object, function 和 undefined. 并没有 array . 实际上数组是object类型. 那么怎么来验证对象是否是数组呢? 在最新的ECMAScript 5中, 可以用 Array.isArray(object) 来检验. 但是ECMAScript 5还没有推广开.
+
+var arr = {};
+var isArray = Object.prototype.toString.call(arr) == "[object Array]";
+console.log(isArray);
+</script>
+</head>
+
+<body>
+</body>
+</html>

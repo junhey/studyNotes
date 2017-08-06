@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="gb2312">
+        <title>无标题文档</title>
+        <script type="text/javascript">
+		/*
+		为了让代码更安全 禁止this关键字指向全局对象
+		*/
+		"use strict";
+		var fn = function()
+		{
+			console.log(this);
+		};
+		fn();
+		
+		//所以，构造函数只要不通过new实例化对象，那么就会直接报错，因为undefined无法设置属性
+		var Cat = function(name)
+		{
+			this.name = name;
+			this.say = function()
+			{
+				alert(this.name);
+			}
+		};
+		Cat("咪咪");
+		window.say();
+		console.log(window);
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>
